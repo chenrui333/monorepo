@@ -1,0 +1,13 @@
+name: ci
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build monorepo:${{github.run_number}}
+        run: |
+          docker build -t monorepo:${{github.run_number}} .
